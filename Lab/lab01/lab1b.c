@@ -21,9 +21,9 @@ int main () {
       foundLetter = 1;
     }
     else if (ispunct(ch)){
-    	if(foundSym == 0)
+      if(foundSym == 0)
         symSeqCount++;
-    	foundSym = 1;
+      foundSym = 1;
     }
   }
 
