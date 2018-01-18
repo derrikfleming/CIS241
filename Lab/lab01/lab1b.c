@@ -4,15 +4,15 @@
 int main () {
   char ch;
   puts("Enter text (Ctrl-D to quit).");
-	int wordCount = 0;
-	int symSeqCount = 0;
-	int foundSym = 0;
-	int foundLetter = 0;
+  int wordCount = 0;
+  int symSeqCount = 0;
+  int foundSym = 0;
+  int foundLetter = 0;
 
   while ( ch = getchar(), ch != EOF ) {
     if (ch == ' '){
-    	foundLetter = 0;
-    	foundSym = 0;
+      foundLetter = 0;
+      foundSym = 0;
     }
     if ((ch == '_' || isalpha(ch) || isdigit(ch)) && ch != ' '){
       if(foundLetter == 0){
@@ -22,7 +22,7 @@ int main () {
     }
     else if (ispunct(ch)){
     	if(foundSym == 0)
-    		symSeqCount++;
+        symSeqCount++;
     	foundSym = 1;
     }
   }
