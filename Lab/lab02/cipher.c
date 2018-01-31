@@ -23,6 +23,8 @@ int main(int argc, char* argv[]){
 	len = strlen(str);
 
 	key_arr	=	(int	*)	malloc (len	*	sizeof(int));
+	if(key_arr == NULL)
+		printf("Memory not allocated.");
 
 	for(int i = 0; i < len; i++){
 		key = toupper(str[i]) - 'A';
@@ -47,6 +49,7 @@ int main(int argc, char* argv[]){
 
 	fclose(fin);
 	fclose(fout);
+	free(key_arr);
 
 	return 0;
 }
