@@ -8,7 +8,7 @@ int main(int argc, char * argv[]){
   int MAXNUM = 26;
   char * encrypt, * decrypt, * key;
   char choice;
-	FILE * fin, * fout;
+  FILE * fin, * fout;
 
   //check argument count
   if (argc != 5)
@@ -22,7 +22,7 @@ int main(int argc, char * argv[]){
   if(fin == NULL || fout == NULL){
     errorHandler(3);
   }
-  encrypt = (char	*)	malloc (MAXNUM * sizeof(char));
+  encrypt = (char	*) malloc (MAXNUM * sizeof(char));
   //allocation check
   if (encrypt == NULL)
     errorHandler(2);
@@ -48,5 +48,5 @@ int main(int argc, char * argv[]){
 
   free(encrypt);
   fclose(fin);
-	fclose(fout);
+  fclose(fout);
 }

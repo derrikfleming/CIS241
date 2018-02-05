@@ -50,12 +50,16 @@ void initializeEncryptArray(char * key, char * encrypt){
   }
 }
 
+// initialize the decrypt array with appropriate cipher letters according to the given key
 void initializeDecryptArray(char * encrypt, char * decrypt){
   for (int i = 0; i < 26; i++){
     decrypt[encrypt[i] - 'A'] = i + 65;
   }
 }
 
+// process data from the input file and write the result to the output file
+// pass the encrypt array to parameter substitute if encryption is intended
+// pass the decrypt array to parameter substitute if decryption is intended
 void processInput(char * substitute, FILE * fin, FILE * fout){
   char ch;
   while ( fscanf(fin, "%c", &ch) != EOF ){
@@ -70,6 +74,7 @@ void processInput(char * substitute, FILE * fin, FILE * fout){
 	}
 }
 
+// prints errors based on the error code passed in
 void errorHandler(int argIndex){
   switch(argIndex){
     case 0:
