@@ -47,15 +47,17 @@ After successful completion of the course the students will be able to:
 2) Kelly, A. & Pohl, I., “A Book on C”, 4th Edition. Addison Wesley, 1998.
 
 **GRADING:**
-Projects 24 % (8 points each, 3 projects)
-Labs 18 % (3 points each, 6 labs)
-Homework 8 % (4 points each, 2 homework assignments)
-Midterm Exam 25 %
-Final Exam 25 %
++ **Projects:** 24 % (8 points each, 3 projects)
++ **Labs:** 18 % (3 points each, 6 labs)
++ **Homework:** 8 % (4 points each, 2 homework assignments)
++ **Midterm:** Exam 25 %
++ **Final:** Exam 25 %
 
 **GRADING SCALE:**
-A: 93-100 A-: 90-92 B+: 87- 89 B: 83-86 B-: 80- 82
-C+: 77-79 C: 73-76 C-: 70-72 D+: 65-69 D: 60- 64
++ A: 93-100 A-: 90-92 
++ B+: 87- 89 B: 83-86 B-: 80- 82
++ C+: 77-79 C: 73-76 C-: 70-72 
++ D+: 65-69 D: 60- 64
 
 **COURSE POLICIES:**
 1. All homework assignments, projects, labs and exams, unless otherwise specified by the instructor, are to be completed individually. Students should not show their assignments to other students. Otherwise, severe penalties could result, including failure in the course. Do not create a difficult situation by representing someone else's work as your own. For more information, consult the University Catalog, the Student Code, and the CS&IS Guidelines for Academic Honesty.
