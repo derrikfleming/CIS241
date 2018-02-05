@@ -29,17 +29,17 @@ int main(int argc, char * argv[]){
 
   //encrypt option
   if (choice == 'E'){
-    encryptKeyMaker(key, encrypt);
-    processFile(encrypt, fin, fout);
+    initializeEncryptArray(key, encrypt);
+    processInput(encrypt, fin, fout);
   }
   //decrypt option
   else if (choice == 'D'){
     decrypt = (char	*)	malloc (MAXNUM * sizeof(char));
     if(decrypt == NULL)
       errorHandler(2);
-    encryptKeyMaker(key, encrypt);
-    decryptKeyMaker(encrypt, decrypt);
-    processFile(decrypt, fin, fout);
+    initializeEncryptArray(key, encrypt);
+    initializeDecryptArray(encrypt, decrypt);
+    processInput(decrypt, fin, fout);
     free(decrypt);
   }
   //invalid choice

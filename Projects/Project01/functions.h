@@ -15,18 +15,15 @@ char * removeDuplicates(char * word);
 int targetFound(char * charArray, int num, char target);
 
 // initialize the encrypt array with appropriate cipher letters according to the given key
-void encryptKeyMaker(char * key, char * encrypt);
+void initializeEncryptArray(char * key, char * encrypt);
 
 // initialize decrypt array with appropriate substitute letters based on the encrypt array
-void decryptKeyMaker(char * encrypt, char * decrypt);
-
-// initialize decrypt array with appropriate substitute letters based on the encrypt array
-void processFile(char * substitute, FILE * inf, FILE * outf);
+void initializeDecryptArray(char * encrypt, char * decrypt);
 
 // process data from the input file and write the result to the output file
 // pass the encrypt array to parameter substitute if encryption is intended
 // pass the decrypt array to parameter substitute if decryption is intended
-void decryptFile(char * substitute, FILE * inf, FILE * outf);
+void processInput(char * substitute, FILE * inf, FILE * outf);
 
 //prints out user-friendly error message
 void errorHandler(int errIndex);

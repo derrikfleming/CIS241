@@ -32,7 +32,7 @@ int targetFound(char * charArray, int num, char target){
 }
 
 // initialize the encrypt array with appropriate cipher letters according to the given key
-void encryptKeyMaker(char * key, char * encrypt){
+void initializeEncryptArray(char * key, char * encrypt){
   char ch;
   for (int i = 0, j = 0, flag = 0; j < 26;){
     ch = key[i];
@@ -50,13 +50,13 @@ void encryptKeyMaker(char * key, char * encrypt){
   }
 }
 
-void decryptKeyMaker(char * encrypt, char * decrypt){
+void initializeDecryptArray(char * encrypt, char * decrypt){
   for (int i = 0; i < 26; i++){
     decrypt[encrypt[i] - 'A'] = i + 65;
   }
 }
 
-void processFile(char * substitute, FILE * fin, FILE * fout){
+void processInput(char * substitute, FILE * fin, FILE * fout){
   char ch;
   while ( fscanf(fin, "%c", &ch) != EOF ){
     if(isupper(ch)){
