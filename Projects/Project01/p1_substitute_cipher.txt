@@ -131,6 +131,8 @@ define a makefile and use command make to automate your testing process. Test yo
 with the given data files. Use Linux command diff –s originalTextFile resultingTextFile to see if
 they are identical. Also add this command line to your makefile so as to perform your test and compare
 the result automatically.
+
+
 Section 4 What Do You Submit?
 You can demonstrate your code working correctly with your instructor by the due time. If you are not
 able to demo, please submit all of your source code, including your program files and makefile by due
