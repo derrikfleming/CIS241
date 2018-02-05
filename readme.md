@@ -36,27 +36,16 @@ regular expression and AWK programming.
 
 **COURSE OBJECTIVES:**
 After successful completion of the course the students will be able to:
-
-```
-1) Application/Use: Use command-line interface to do basic system operations such as
-create a directory, modify file permissions, create a link, manage processes, and access a
-computer remotely.
-2) Mechanism/Manipulation: Manipulate basic features of a command-line environment
-such as the 'PATH', which specifies the locations of executable programs, and the
-'CLASSPATH', which specifies the locations of user-defined Java classes and packages.
-3) Synthesis/Writing: Write basic programs in a shell or scripting language, e.g. to compile
-statistics of data stored in files.
+1) Application/Use: Use command-line interface to do basic system operations such as create a directory, modify file permissions, create a link, manage processes, and access a computer remotely.
+2) Mechanism/Manipulation: Manipulate basic features of a command-line environment such as the 'PATH', which specifies the locations of executable programs, and the 'CLASSPATH', which specifies the locations of user-defined Java classes and packages.
+3) Synthesis/Writing: Write basic programs in a shell or scripting language, e.g. to compile statistics of data stored in files.
 4) Application/Use: Use utilities such as 'make' to compile and run a C program.
-5) Synthesis/Construct: Construct programs that access data by using the range of pointer
-operations and dynamic memory management to implement a basic linked list.
-```
-**TEXTBOOKS:**
+5) Synthesis/Construct: Construct programs that access data by using the range of pointer operations and dynamic memory management to implement a basic linked list.
 
-```
-1) Sobell, M. G., “A Practical Guide to Linux Commands, Editors, and Shell
-Programming”, Prentice Hall, Fourth Edition, Copyright @ 2018.
+**TEXTBOOKS:**
+1) Sobell, M. G., “A Practical Guide to Linux Commands, Editors, and Shell Programming”, Prentice Hall, Fourth Edition, Copyright @ 2018.
 2) Kelly, A. & Pohl, I., “A Book on C”, 4th Edition. Addison Wesley, 1998.
-```
+
 **GRADING:**
 Projects 24 % (8 points each, 3 projects)
 Labs 18 % (3 points each, 6 labs)
@@ -69,32 +58,13 @@ A: 93-100 A-: 90-92 B+: 87- 89 B: 83-86 B-: 80- 82
 C+: 77-79 C: 73-76 C-: 70-72 D+: 65-69 D: 60- 64
 
 **COURSE POLICIES:**
-```
-1. All homework assignments, projects, labs and exams, unless otherwise specified by the
-    instructor, are to be completed individually. Students should not show their assignments to
-    other students. Otherwise, severe penalties could result, including failure in the course. Do
-    not create a difficult situation by representing someone else's work as your own. For more
-    information, consult the University Catalog, the Student Code, and the CS&IS Guidelines
-    for Academic Honesty.
-2. Homework assignments and projects are completed on your own time outside of class.
-    Please start early and allocate sufficient time in open labs or at home to complete them.
-    Any project or homework is considered late if you turn it in past the due time on the due
-    date set by the instructor.
-3. Late penalty is 1 0% for the first day and 10% for each subsequent day. No projects or
-    homework that are more than three days (72 hours) late will be accepted.
-4. The instructor reserves the right to modify course policies, the course schedule, assignment
-    point values and due time.
-5. The student is responsible for ALL materials covered and announcements made in class on
-    any day that he or she missed a class as well as those made on the course web page. Students
-    should also check their emails and Blackboard regularly to receive the announcements of
-    the course.
-6. If students have any questions about grades of homework, projects and exams, there is a 7-
-    day limit to notify the instructor from when the course work is returned or the grade is
-    posted online, whether or not students are present to receive the returned work. After that
-    period, regrading will not be considered.
-7. Make-up exams are in general not given. A make-up exam will be considered only when a
-    provably serious family or personal emergency occurs, and proof is presented.
-```
+1. All homework assignments, projects, labs and exams, unless otherwise specified by the instructor, are to be completed individually. Students should not show their assignments to other students. Otherwise, severe penalties could result, including failure in the course. Do not create a difficult situation by representing someone else's work as your own. For more information, consult the University Catalog, the Student Code, and the CS&IS Guidelines for Academic Honesty.
+2. Homework assignments and projects are completed on your own time outside of class. Please start early and allocate sufficient time in open labs or at home to complete them. Any project or homework is considered late if you turn it in past the due time on the due date set by the instructor.
+3. Late penalty is 1 0% for the first day and 10% for each subsequent day. No projects or homework that are more than three days (72 hours) late will be accepted.
+4. The instructor reserves the right to modify course policies, the course schedule, assignment point values and due time.
+5. The student is responsible for ALL materials covered and announcements made in class on any day that he or she missed a class as well as those made on the course web page. Students should also check their emails and Blackboard regularly to receive the announcements of the course.
+6. If students have any questions about grades of homework, projects and exams, there is a 7-day limit to notify the instructor from when the course work is returned or the grade is posted online, whether or not students are present to receive the returned work. After that period, regrading will not be considered.
+7. Make-up exams are in general not given. A make-up exam will be considered only when a provably serious family or personal emergency occurs, and proof is presented.
 
 **SPECIAL NEEDS:**
 If there is any student in this class who has special needs because of learning, physical or other
