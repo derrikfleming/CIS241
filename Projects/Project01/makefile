@@ -1,5 +1,5 @@
 p1:
-	gcc p1.c functions.c -o p1
+	gcc p1.c functions.c -Wall -o p1
 	make test
 
 test: test1 test2 verify

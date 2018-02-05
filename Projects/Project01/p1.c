@@ -6,24 +6,23 @@
 
 int main(int argc, char * argv[]){
   int MAXNUM = 26;
-  char * encrypt = (char	*)	malloc (MAXNUM * sizeof(char));
-  char * key;
+  char * encrypt, * decrypt, * key;
   char choice;
-	FILE * fin;
-  FILE * fout;
+	FILE * fin, * fout;
 
   //check argument count
   if (argc != 5)
     errorHandler(0);
-  //allocation check
-  if (encrypt == NULL)
-    errorHandler(2);
 
   choice = toupper(*argv[1]);
   key = removeDuplicates(argv[2]);
 
   fin = fopen(argv[3], "r");
   fout = fopen(argv[4],"w");
+  encrypt = (char	*)	malloc (MAXNUM * sizeof(char));
+  //allocation check
+  if (encrypt == NULL)
+    errorHandler(2);
 
   //encrypt option
   if (choice == 'E'){
@@ -32,17 +31,19 @@ int main(int argc, char * argv[]){
   }
   //decrypt option
   else if (choice == 'D'){
-    char * decrypt = (char	*)	malloc (MAXNUM * sizeof(char));
+    decrypt = (char	*)	malloc (MAXNUM * sizeof(char));
     if(decrypt == NULL)
       errorHandler(2);
     encryptKeyMaker(key, encrypt);
     decryptKeyMaker(encrypt, decrypt);
     processFile(decrypt, fin, fout);
+    free(decrypt);
   }
   //invalid choice
   else
     errorHandler(1);
 
+  free(encrypt);
   fclose(fin);
 	fclose(fout);
 }
