@@ -19,6 +19,9 @@ int main(int argc, char * argv[]){
 
   fin = fopen(argv[3], "r");
   fout = fopen(argv[4],"w");
+  if(fin == NULL || fout == NULL){
+    errorHandler(3);
+  }
   encrypt = (char	*)	malloc (MAXNUM * sizeof(char));
   //allocation check
   if (encrypt == NULL)
