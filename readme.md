@@ -8,21 +8,21 @@
 
 ### Winter 2018
 
-**Course Number:** CIS 241
-**Section Number:** 02
-**Course Name:** System-Level Programing and Utilities
-**Credit Hours:** 3
-**Semester:** Winter 2018
-**Class Lectures:** TR, 4:00 – 5:15 pm, MAK B- 1 - 124
-**INSTRUCTOR: Xinli Wang
-**Office:** MAK D- 2 - 214
-**Phone: 616 - 331 - 4335
-**E-mail:** wangx@gvsu.edu
-**Office Hours:** MTWR, 2:00 – 2:50 pm
+Course Number: CIS 241
+Section Number: 02
+Course Name: System-Level Programing and Utilities
+Credit Hours: 3
+Semester: Winter 2018
+Class Lectures: TR, 4:00 – 5:15 pm, MAK B- 1 - 124
+INSTRUCTOR: Xinli Wang
+Office: MAK D- 2 - 214
+Phone: 616 - 331 - 4335
+E-mail: wangx@gvsu.edu
+Office Hours: MTWR, 2:00 – 2:50 pm
 You are welcome to walk in when you see me in my office.
 Other times by appointment, an email is preferred.
 
- **COURSE WEBPAGE:**
+**COURSE WEBPAGE:**
 Blackboard will be used as the course webpage for this class. Students are responsible for all
 assignments posted on the course web page.
 https://mybb.gvsu.edu
