@@ -2,13 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define LEN 4
+//removed to set LEN via command line args for testing via make
+//#define LEN 4
 
 char* strnsub (char *p, int n);
 
 int main(int argc, char * argv[]){
+    int LEN;
     char line[] = "His textbook was bought from that bookstore";
     char *p1, *p2;
+
+    if(argc == 2)
+      LEN = atoi(argv[1]);
+    else{
+      printf("Incorrect argument passed. Default value (LEN = 4) used.");
+      LEN = 4;
+    }
 
     //set p1 to the beginning of string line;
     int i = 0;
