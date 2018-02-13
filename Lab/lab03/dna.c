@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 //removed to set LEN via command line args for testing via make
 //#define LEN 4
@@ -10,6 +11,7 @@ char* strnsub (char *p, int n);
 int main(int argc, char * argv[]){
     int LEN;
     char line[] = "His textbook was bought from that bookstore";
+    int lineLen = strlen(line);
     char *p1, *p2;
 
     if(argc == 2)
@@ -22,7 +24,6 @@ int main(int argc, char * argv[]){
     //set p1 to the beginning of string line;
     int i = 0;
     int j = 1;
-    int lineLen = strlen(line);
     p1 = strnsub(&line[i],LEN);
 
     while (i < lineLen){
@@ -39,7 +40,6 @@ int main(int argc, char * argv[]){
         j++;
         if (j < lineLen)
           p2 = strnsub(&line[j],LEN);
-;
       }
       i++;
       j = i + 1;
