@@ -23,7 +23,7 @@ int main(int argc, char * argv[]){
         // use strncmp() to compare
         if (strncmp(p1,p2,LEN) == 0) {
             printf("The original string is:\n%s\n", line);
-            printf("The first substring:  %s\n", strnsub(p1, LEN));
+            printf("The first substring: %s\n", strnsub(p1, LEN));
             printf("The second substring: %s\n", strnsub(p2, LEN));
             return 0;
         }
