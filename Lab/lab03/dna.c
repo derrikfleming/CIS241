@@ -6,8 +6,7 @@
 
 char* strnsub (char *p, int n);
 
-int main()
-{
+int main(int argc, char * argv[]){
     char line[] = "His textbook was bought from that bookstore";
     char *p1, *p2;
 
