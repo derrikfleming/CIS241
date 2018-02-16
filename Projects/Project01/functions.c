@@ -3,21 +3,24 @@
 // remove duplicate characters in array word and return the resulting string
 char * removeDuplicates(char * word){
   char * result;
-  int len = strlen(word);
-  result = (char	*)	malloc (len * sizeof(char));
+  int len = strlen(word) + 1;
+  result = malloc (len);
   if (result == NULL){
     errorHandler(2);
   }
   char ch;
   int i;
   int j;
+
   for( i = 0, j = 0; i < len; i++){
     ch = word[i];
+    result[i+1] = '\0';
     if(!targetFound(result, i, ch)){
       result[j] = ch;
       j++;
     }
   }
+  result[len] = '\0';
 
   return result;
 }
