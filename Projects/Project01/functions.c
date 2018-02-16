@@ -10,8 +10,8 @@ char * removeDuplicates(char * word){
   }
   char ch;
   int i;
-	int j;
-	for( i = 0, j = 0; i < len; i++){
+  int j;
+  for( i = 0, j = 0; i < len; i++){
     ch = word[i];
     if(!targetFound(result, i, ch)){
       result[j] = ch;
@@ -36,7 +36,7 @@ int targetFound(char * charArray, int num, char target){
 // initialize the encrypt array with appropriate cipher letters according to the given key
 void initializeEncryptArray(char * key, char * encrypt){
   char ch;
-	int i, j, flag;
+  int i, j, flag;
   for (i = 0, j = 0, flag = 0; j < 26;){
     ch = key[i];
     if (ch == '\0' || flag == 1){
@@ -56,7 +56,7 @@ void initializeEncryptArray(char * key, char * encrypt){
 // initialize the decrypt array with appropriate cipher letters according to the given key
 void initializeDecryptArray(char * encrypt, char * decrypt){
   int i;
-	for ( i = 0; i < 26; i++){
+  for ( i = 0; i < 26; i++){
     decrypt[encrypt[i] - 'A'] = i + 65;
   }
 }
