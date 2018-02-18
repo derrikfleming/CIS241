@@ -5,7 +5,7 @@
 
 
 int main(int argc, char * argv[]){
-  int MAXNUM = 26;
+  int MAXNUM = 27;
   char * encrypt, * decrypt, * key;
   char choice;
   FILE * fin, * fout;
@@ -19,10 +19,12 @@ int main(int argc, char * argv[]){
 
   fin = fopen(argv[3], "r");
   fout = fopen(argv[4],"w");
-  if(fin == NULL || fout == NULL){
+
+  if(fin == NULL || fout == NULL)
     errorHandler(3);
-  }
+
   encrypt = (char	*) malloc (MAXNUM * sizeof(char));
+
   //allocation check
   if (encrypt == NULL)
     errorHandler(2);
@@ -35,6 +37,7 @@ int main(int argc, char * argv[]){
   //decrypt option
   else if (choice == 'D'){
     decrypt = (char	*)	malloc (MAXNUM * sizeof(char));
+
     if(decrypt == NULL)
       errorHandler(2);
     initializeEncryptArray(key, encrypt);
