@@ -11,10 +11,9 @@ char * removeDuplicates(char * word){
   }
 
   char ch;
+  result[0] = '\0';
 
-  int i;
-  int j;
-  for(i = 0, j = 0; i < len; i++){
+  for(int i = 0, j = 0; i < len; i++){
     ch = word[i];
 
     if(!targetFound(result, ch)){
@@ -42,6 +41,7 @@ int targetFound(char * charArray, char target){
 void initializeEncryptArray(char * key, char * encrypt){
   char ch;
 
+  key[0] = '\0';
   for (int i = 0, j = 0, flag = 0; j < 27;){
     ch = key[i];
 
@@ -65,6 +65,8 @@ void initializeEncryptArray(char * key, char * encrypt){
 // initialize the decrypt array with appropriate cipher letters according to the given key
 void initializeDecryptArray(char * encrypt, char * decrypt){
   int i;
+
+  decrypt[0] = '\0';
   for ( i = 0; i < 27; i++){
     decrypt[encrypt[i] - 'A'] = i + 65;
   }
@@ -93,13 +95,17 @@ void processInput(char * substitute, FILE * fin, FILE * fout){
 void errorHandler(int argIndex){
   switch(argIndex){
     case 0:
-      printf("Error: Incorrect number of arguments received.\n\tPlease try again using the correct number of args.\n");
+      printf("Error: Incorrect number of arguments received.\n\tPlease try again using the correct number of args (5).\n");
+      break;
     case 1:
       printf("Error: Invalid program option.\n\tPlease try again using either 'd'/'D' or 'e'/'E'.\n");
+      break;
     case 2:
       printf("Error: Memory could not be allocated.\n");
+      break;
     case 3:
       printf("Error: Invalid input filename given for input.\n\tPlease use a valid filename for input.\n");
+      break;
   }
   exit(1);
 }

@@ -5,7 +5,7 @@
 
 
 int main(int argc, char * argv[]){
-  int MAXNUM = 27;
+  const int arraySize = 27;
   char * encrypt, * decrypt, * key;
   char choice;
   FILE * fin, * fout;
@@ -23,7 +23,7 @@ int main(int argc, char * argv[]){
   if(fin == NULL || fout == NULL)
     errorHandler(3);
 
-  encrypt = (char	*) malloc (MAXNUM * sizeof(char));
+  encrypt = malloc (arraySize);
 
   //allocation check
   if (encrypt == NULL)
@@ -36,7 +36,7 @@ int main(int argc, char * argv[]){
   }
   //decrypt option
   else if (choice == 'D'){
-    decrypt = (char	*)	malloc (MAXNUM * sizeof(char));
+    decrypt = malloc (arraySize);
 
     if(decrypt == NULL)
       errorHandler(2);
@@ -49,6 +49,7 @@ int main(int argc, char * argv[]){
   else
     errorHandler(1);
 
+  free(key);
   free(encrypt);
   fclose(fin);
   fclose(fout);
