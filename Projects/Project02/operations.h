@@ -9,39 +9,45 @@
 
 #define N 20
 
-struct product{
-  char name[N];
-  float quantity_value;
-  char quantity_unit[N];
-  float price_value;
-  char price_unit[N];
+struct product {
+  char name[20];
+  float quantityValue;
+  char quantityUnit[N];
+  float priceValue;
+  char priceUnit[20];
   struct product *next;
 };
 
+struct product * create(char * name, float quantityValue, char * quantityUnit, int priceValue, char * priceUnit, struct product * next);
+
 // insert a node to the list
-int insert(product **l, product node);
+struct product * insertProduct(char * name, float quantityValue, char * quantityUnit, int priceValue, char * priceUnit, struct product * head);
 
 // remove a node from list
-void rmItem(product *l, product *node);
+void rmItem();
 
 // show list
-void showList(product *l);
+void showList(struct product *l);
 
 // load data from file if
-int loadData(char inf[], product **l);
+int loadData(char inf[], struct product **l);
 
 // save data to file outf
-float purchase(product *l, char product[], float q);
+float purchase(struct product *l, char name[], float q);
 
 // check out price of product p from list 1
-void check_price(product *l, char p[]);
+void checkPrice(struct product *l, char p[]);
 
 // find a product p from list l
-void findItem(product *l, char p[]);
+void find(struct product *l, char p[]);
 
 // the job starts here, shart with laoding data from
 // the file data, and perform the functions by calling
 // related functions. Ends at saving data to the file data
 int doIt(char data[]);
+
+int choice(int choice);
+
+void printMenu();
 
 #endif //OPERATIONS_H
