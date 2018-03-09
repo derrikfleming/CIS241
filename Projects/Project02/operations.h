@@ -44,7 +44,7 @@ float purchase(product *l, char product[], float q);
 void checkPrice(product *l, char product[]);
 
 // find a product p from list l
-void find(product *l, char product[]);
+product * findItem(product * head);
 
 // the job starts here, shart with laoding data from
 // the file data, and perform the functions by calling
@@ -53,6 +53,8 @@ int doIt();
 
 void userChoice(int choice, product ** l);
 
-void menu();
+void printMenu();
+
+void printItem(product * item);
 
 #endif //OPERATIONS_H

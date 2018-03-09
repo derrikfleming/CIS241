@@ -30,7 +30,6 @@ product * create(){
   else{
     printf("Node creation error! Memory could not be allocated.");
   }
-
   return node;
 }
 
@@ -50,43 +49,35 @@ void rmItem(product * l, product * node){
 void showList(product * head){
   product * cursor = head;
   while(cursor != NULL){
-    printf("\nProduct: %s", cursor->name);
-    printf("\nQuantity: %i", cursor->quantityValue);
-    printf("\nQuantity Unit: %s", cursor->quantityUnit);
-    printf("\nPrice: %f", cursor->priceValue);
-    printf("\nPrice unit: %s\n", cursor->priceUnit);
+    printItem(cursor);
     if(cursor->next == NULL)
       break;
     cursor = cursor->next;
   }
-  printf("\nEnd of inventory list.\n\n");
+  printf("\nEnd of inventory list.\n");
 }
 
-int saveData(char outf[], product * l){
-  return 0;
+product * findItem(product * head){
+  product * cursor = head;
+  product * found = NULL;
+  char buf[N];
+
+  printf("\nEnter item name: ");
+  scanf("%s", buf);
+
+  while(found == NULL){
+    if(strncmp(cursor->name, buf, N) == 0)
+      found = cursor;
+
+    if(cursor->next == NULL){
+      printf("\nItem '%s' not found!\n", buf);
+    }
+    cursor = cursor->next;
+  }
+  return found;
 }
 
-// load data from file if
-int loadData(char inf[], product **l){
-  return 0;
-}
-
-
-float purchase(product * l, char product[], float q){
-  return 0.0;
-}
-
-// check out price of product p from list 1
-void checkPrice(product * l, char product[]){
-
-}
-
-// find a product p from list l
-void find(product *l, char product[]){
-
-}
-
-void menu(){
+void printMenu(){
   printf("Welcome to Derrik Fleming's Grocery Store\n");
   printf("Please let me know what you what you want to do by typing one of the numbers\n");
   printf("============================================================================\n");
@@ -95,6 +86,16 @@ void menu(){
   printf("4: Remove a product from a store         5: Find product\n");
   printf("6: Inventory                             7: Done for today\n");
   printf("What do you want to do?\n\n");
+}
+
+void printItem(product * item){
+  if(item != NULL){
+    printf("\nProduct: %s", item->name);
+    printf("\nQuantity: %i", item->quantityValue);
+    printf("\nQuantity Unit: %s", item->quantityUnit);
+    printf("\nPrice: %f", item->priceValue);
+    printf("\nPrice unit: %s\n", item->priceUnit);
+  }
 }
 
 int save(product * head){
@@ -134,6 +135,7 @@ void userChoice(int choice, product ** l){
       break;
 
     case 5:
+      printItem(findItem(*l));
       break;
 
     case 6:
@@ -145,7 +147,6 @@ void userChoice(int choice, product ** l){
     case 8:
       break;
   }
-
 }
 
 // the job starts here, start with laoding data from
@@ -155,7 +156,7 @@ int doIt(){
   product * head = NULL;
 
   while(1){
-    menu();
+    printMenu();
 
     int choice;
     scanf("%i", &choice);
