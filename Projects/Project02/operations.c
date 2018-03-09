@@ -1,76 +1,92 @@
 #include "operations.h"
 
-struct product * create(char * name, float quantityValue, char * quantityUnit, int priceValue, char * priceUnit, struct product * next){
-  struct product* newNode = (struct product*)malloc(sizeof(struct product));
+product * create(){
+  product * node = (product*)malloc(sizeof(product));
 
   // add values to newNode
-  if(newNode != NULL){
-    strcpy(newNode->name, name);
-    newNode->quantityValue = quantityValue;
-    strcpy(newNode->quantityUnit, quantityUnit);
-    newNode->priceValue = priceValue;
-    strcpy(newNode->priceUnit, priceUnit);
-    newNode->next = next;
+  if(node != NULL){
+    char buf[N];
+
+    printf("\n\nProduct name: ");
+    scanf("%s", buf);
+    strcpy(node->name, buf);
+
+    printf("Product quantity: ");
+    scanf("%i", &(node->quantityValue));
+
+    printf("Product quantity unit: ");
+    scanf("%s", buf);
+    strcpy(node->quantityUnit, buf);
+
+    printf("Product price: ");
+    scanf("%f", &(node->priceValue));
+
+    printf("Product price unit: ");
+    scanf("%s", buf);
+    strcpy(node->priceUnit, buf);
+
+    node->next = NULL;
   }
   else{
     printf("Node creation error! Memory could not be allocated.");
   }
 
-  return newNode;
+  return node;
 }
 
-// insert a node to the list
-struct product * insertProduct(char * name, float quantityValue, char * quantityUnit, int priceValue, char * priceUnit, struct product * head){
-  //newNode created, newnode->next is set to current head
-  struct product * newNode = create(name, quantityValue, quantityUnit, priceValue, priceUnit, head);
-  //set head to newNode
-  head = newNode;
-
-  return head;
+// insert a node to the linked list
+int insertProduct(product ** head, product * node){
+    node->next = *head;
+    *head = node;
+    return 0;
 }
 
 // remove a node from list
-void rmItem(){
+void rmItem(product * l, product * node){
 
 }
 
 // show list
-void showList(struct product *l){
-
+void showList(product * head){
+  product * cursor = head;
+  while(cursor != NULL){
+    printf("\nProduct: %s", cursor->name);
+    printf("\nQuantity: %i", cursor->quantityValue);
+    printf("\nQuantity Unit: %s", cursor->quantityUnit);
+    printf("\nPrice: %f", cursor->priceValue);
+    printf("\nPrice unit: %s\n", cursor->priceUnit);
+    if(cursor->next == NULL)
+      break;
+    cursor = cursor->next;
+  }
+  printf("\nEnd of inventory list.\n\n");
 }
 
-int saveData(){
-
+int saveData(char outf[], product * l){
+  return 0;
 }
 
 // load data from file if
-int loadData(char inf[], struct product **l){
-
+int loadData(char inf[], product **l){
+  return 0;
 }
 
 
-float purchase(struct product *l, char name[], float q){
-
+float purchase(product * l, char product[], float q){
+  return 0.0;
 }
 
 // check out price of product p from list 1
-void checkPrice(struct product *l, char p[]){
+void checkPrice(product * l, char product[]){
 
 }
 
 // find a product p from list l
-void find(struct product *l, char p[]){
+void find(product *l, char product[]){
 
 }
 
-// the job starts here, start with laoding data from
-// the file data, and perform the functions by calling
-// related functions. Ends at saving data to the file data
-int doIt(char data[]){
-
-}
-
-void printMenu(){
+void menu(){
   printf("Welcome to Derrik Fleming's Grocery Store\n");
   printf("Please let me know what you what you want to do by typing one of the numbers\n");
   printf("============================================================================\n");
@@ -81,44 +97,43 @@ void printMenu(){
   printf("What do you want to do?\n\n");
 }
 
-int save(struct product *l, struct product * head){
-
+int save(product * head){
+  int success = 0;
   if(head != NULL){
 
+    success = 1;
   }
-  else{
-
-  }
+  return success;
 }
 
 int open(){
-
+  return 0;
 }
 
-int choice(int choice){
+
+void userChoice(int choice, product ** l){
+  product * node = NULL;
+
   switch(choice){
     case 0:
-
-      insert();
+      node = create();
+      insertProduct(&(*l), node);
       break;
 
     case 1:
-      printf("Enter item name: ");
       break;
 
     case 2:
-      printf("Enter item name: ");
       break;
 
     case 3:
+      showList(*l);
       break;
 
     case 4:
-      printf("Enter item name: ");
       break;
 
     case 5:
-      printf("Enter item name: ");
       break;
 
     case 6:
@@ -129,5 +144,21 @@ int choice(int choice){
 
     case 8:
       break;
+  }
+
+}
+
+// the job starts here, start with laoding data from
+// the file data, and perform the functions by calling
+// related functions. Ends at saving data to the file data
+int doIt(){
+  product * head = NULL;
+
+  while(1){
+    menu();
+
+    int choice;
+    scanf("%i", &choice);
+    userChoice(choice, &head);
   }
 }
