@@ -12,7 +12,7 @@ product * create(){
     strcpy(node->name, buf);
 
     printf("Product quantity: ");
-    scanf("%i", &(node->quantityValue));
+    scanf("%f", &(node->quantityValue));
 
     printf("Product quantity unit: ");
     scanf("%s", buf);
@@ -57,21 +57,18 @@ void showList(product * head){
   printf("\nEnd of inventory list.\n");
 }
 
-product * findItem(product * head){
+// find item in list
+product * findItem(product * head, char name[]){
   product * cursor = head;
   product * found = NULL;
-  char buf[N];
-
-  printf("\nEnter item name: ");
-  scanf("%s", buf);
 
   while(found == NULL){
-    if(strncmp(cursor->name, buf, N) == 0)
-      found = cursor;
-
-    if(cursor->next == NULL){
-      printf("\nItem '%s' not found!\n", buf);
+    if(cursor == NULL){
+      printf("\nItem '%s' not found!\n", name);
+      break;
     }
+    if(strncmp(cursor->name, name, N) == 0)
+      found = cursor;
     cursor = cursor->next;
   }
   return found;
@@ -91,7 +88,7 @@ void printMenu(){
 void printItem(product * item){
   if(item != NULL){
     printf("\nProduct: %s", item->name);
-    printf("\nQuantity: %i", item->quantityValue);
+    printf("\nQuantity: %f", item->quantityValue);
     printf("\nQuantity Unit: %s", item->quantityUnit);
     printf("\nPrice: %f", item->priceValue);
     printf("\nPrice unit: %s\n", item->priceUnit);
@@ -107,13 +104,32 @@ int save(product * head){
   return success;
 }
 
-int open(){
+int loadData(char inf[], product **l){
   return 0;
 }
 
+float purchase(product * head, char name[], float quantity){
+  product * item = findItem(head, name);
+  float total = 0.0;
+
+  if(item != NULL){
+    item->quantityValue -= quantity;
+    total = quantity * item->priceValue;
+  }
+
+  return total;
+}
+
+// check out price of product p from list 1
+void checkPrice(product *l, char product[]){
+
+}
 
 void userChoice(int choice, product ** l){
   product * node = NULL;
+  char buf[N], name[N];
+  float quantity, price;
+  static float total = 0.0;
 
   switch(choice){
     case 0:
@@ -122,6 +138,12 @@ void userChoice(int choice, product ** l){
       break;
 
     case 1:
+      printf("\nEnter item name: ");
+      scanf("%s", buf);
+      strcpy(name, buf);
+      printf("\nEnter quantity: ");
+      scanf("%f", &quantity);
+      total += purchase(*l, name, quantity);
       break;
 
     case 2:
@@ -135,10 +157,15 @@ void userChoice(int choice, product ** l){
       break;
 
     case 5:
-      printItem(findItem(*l));
+      printf("\nEnter item name: ");
+      scanf("%s", buf);
+      strcpy(name, buf);
+      printItem(findItem(*l, name));
       break;
 
     case 6:
+      printf("Total sales: %f", total);
+      showList(*l);
       break;
 
     case 7:

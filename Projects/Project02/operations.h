@@ -11,7 +11,7 @@
 
 struct product {
   char name[20];
-  int quantityValue;
+  float quantityValue;
   char quantityUnit[N];
   float priceValue;
   char priceUnit[20];
@@ -38,13 +38,13 @@ int loadData(char inf[], product **l);
 int saveData(char outf[], product * l);
 
 // purchase product
-float purchase(product *l, char product[], float q);
+float purchase(product *l, char product[], float quantity);
 
 // check out price of product p from list 1
 void checkPrice(product *l, char product[]);
 
 // find a product p from list l
-product * findItem(product * head);
+product * findItem(product * head, char name[]);
 
 // the job starts here, shart with laoding data from
 // the file data, and perform the functions by calling
