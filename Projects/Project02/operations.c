@@ -1,8 +1,7 @@
 #include "operations.h"
 
 product * create(){
-  product * node = (product*)malloc(sizeof(product));
-
+  product * node = (product *) malloc(sizeof(product));
   // add values to newNode
   if(node != NULL){
     char buf[N];
@@ -35,26 +34,64 @@ product * create(){
 
 // insert a node to the linked list
 int insertProduct(product ** head, product * node){
+
     node->next = *head;
     *head = node;
     return 0;
 }
 
 // remove a node from list
-void rmItem(product * l, product * node){
+void rmItem(product ** head, product * node){
+  product * cursor = *head;
+  product * previous = NULL;
 
+  while(previous == NULL){
+    if(cursor == NULL){
+      printf("\nItem '%s' not found in list!\n", node->name);
+      break;
+    }
+    //product to remove is head
+    if(strncmp(cursor->name, node->name, N) == 0){
+      previous = cursor;
+      // multiple products in list
+      if(previous->next != NULL){
+        *head = previous->next;
+        free(node);
+      }
+      // one product
+      else{
+        *head = NULL;
+        free(node);
+      }
+    }
+    // product to remove is not head
+    else if(strncmp((cursor->next)->name, node->name, N) == 0){
+      previous = cursor;
+      if((cursor->next)->next != NULL)
+        previous->next = (cursor->next)->next;
+      //product to remove is tail
+      else
+        previous->next = NULL;
+    }
+    else
+      cursor = cursor->next;
+  }
 }
 
 // show list
 void showList(product * head){
   product * cursor = head;
-  while(cursor != NULL){
-    printItem(cursor);
-    if(cursor->next == NULL)
-      break;
-    cursor = cursor->next;
+  if(cursor != NULL){
+    while(cursor != NULL){
+      printItem(cursor);
+      if(cursor->next == NULL)
+        break;
+      cursor = cursor->next;
+    }
+    printf("End of inventory list.\n");
   }
-  printf("\nEnd of inventory list.\n");
+  else
+    printf("Inventory is empty!\n");
 }
 
 // find item in list
@@ -98,7 +135,6 @@ void printItem(product * item){
 int save(product * head){
   int success = 0;
   if(head != NULL){
-
     success = 1;
   }
   return success;
@@ -108,15 +144,18 @@ int loadData(char inf[], product **l){
   return 0;
 }
 
-float purchase(product * head, char name[], float quantity){
-  product * item = findItem(head, name);
+float purchase(product ** head, char name[], float quantity){
+  product * item = findItem(*head, name);
   float total = 0.0;
 
   if(item != NULL){
-    item->quantityValue -= quantity;
-    total = quantity * item->priceValue;
+    if(item->quantityValue >= quantity){
+      item->quantityValue -= quantity;
+      total = quantity * item->priceValue;
+    }
+    else
+      printf("Quantity '%f' unavailable!", quantity);
   }
-
   return total;
 }
 
@@ -143,10 +182,18 @@ void userChoice(int choice, product ** l){
       strcpy(name, buf);
       printf("\nEnter quantity: ");
       scanf("%f", &quantity);
-      total += purchase(*l, name, quantity);
+      total += purchase(&(*l), name, quantity);
       break;
 
     case 2:
+      printf("\nEnter item name: ");
+      scanf("%s", buf);
+      strcpy(name, buf);
+      node = findItem(*l, name);
+      if(node != NULL)
+        printf("\n %s costs %f %s.\n", name, node->priceValue, node->priceUnit);
+      else
+        printf("Could not find a price for %s", name);
       break;
 
     case 3:
@@ -154,6 +201,10 @@ void userChoice(int choice, product ** l){
       break;
 
     case 4:
+      printf("\nEnter item name: ");
+      scanf("%s", buf);
+      strcpy(name, buf);
+      rmItem(&(*l), findItem(*l, name));
       break;
 
     case 5:
@@ -171,7 +222,8 @@ void userChoice(int choice, product ** l){
     case 7:
       break;
 
-    case 8:
+    default:
+      printf("Error: Incorrect input received. Please try again, use digits 0-7.\n");
       break;
   }
 }

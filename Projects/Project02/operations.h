@@ -26,7 +26,7 @@ product * create();
 int insertProduct(product ** head, product * node);
 
 // remove a node from list
-void rmItem(product * l, product * node);
+void rmItem(product ** head, product * node);
 
 // show list
 void showList(product * head);
@@ -38,7 +38,7 @@ int loadData(char inf[], product **l);
 int saveData(char outf[], product * l);
 
 // purchase product
-float purchase(product *l, char product[], float quantity);
+float purchase(product ** head, char product[], float quantity);
 
 // check out price of product p from list 1
 void checkPrice(product *l, char product[]);
