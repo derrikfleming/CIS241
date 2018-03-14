@@ -4,25 +4,27 @@ product * create(){
   product * node = (product *) malloc(sizeof(product));
   // add values to newNode
   if(node != NULL){
-    char buf[N];
+    char buf[250];
 
     printf("\n\nProduct name: ");
     scanf("%s", buf);
-    strcpy(node->name, buf);
+    strncpy(node->name, buf, 20);
 
     printf("Product quantity: ");
-    scanf("%f", &(node->quantityValue));
+    scanf("%s", buf);
+    node->quantityValue = atof(buf);
 
     printf("Product quantity unit: ");
     scanf("%s", buf);
-    strcpy(node->quantityUnit, buf);
+    strncpy(node->quantityUnit, buf, 20);
 
     printf("Product price: ");
-    scanf("%f", &(node->priceValue));
+    scanf("%s", buf);
+    node->priceValue = atof(buf);
 
     printf("Product price unit: ");
     scanf("%s", buf);
-    strcpy(node->priceUnit, buf);
+    strncpy(node->priceUnit, buf, 20);
 
     node->next = NULL;
   }
@@ -34,7 +36,6 @@ product * create(){
 
 // insert a node to the linked list
 int insertProduct(product ** head, product * node){
-
     node->next = *head;
     *head = node;
     return 0;
@@ -82,16 +83,23 @@ void rmItem(product ** head, product * node){
 void showList(product * head){
   product * cursor = head;
   if(cursor != NULL){
+    printf("---------------------------------------\n");
+    printf("INVENTORY LIST\n");
+    printf("---------------------------------------\n");
     while(cursor != NULL){
       printItem(cursor);
       if(cursor->next == NULL)
         break;
       cursor = cursor->next;
     }
-    printf("\nEnd of inventory list.\n\n");
+    printf("End of inventory list.\n");
+    printf("---------------------------------------\n\n");
   }
-  else
-    printf("Inventory is empty!\n\n");
+  else{
+    printf("---------------------------------------\n");
+    printf("Inventory is empty!\n");
+    printf("---------------------------------------\n\n");
+  }
 }
 
 // find item in list
@@ -112,24 +120,29 @@ product * findItem(product * head, char name[]){
 }
 
 void printMenu(){
+  printf("============================================================================\n");
   printf("Welcome to Derrik Fleming's Grocery Store\n");
   printf("Please let me know what you what you want to do by typing one of the numbers\n");
   printf("============================================================================\n");
-  printf("0: Add product to store                  1: Purchase product from store\n");
-  printf("2: Check price of a product              3: Show products in store\n");
-  printf("4: Remove a product from a store         5: Find product\n");
-  printf("6: Inventory                             7: Done for today\n");
+  printf("|  0: Add product to store           |  1: Purchase product from store     |\n");
+  printf("----------------------------------------------------------------------------\n");
+  printf("|  2: Check price of a product       |  3: Show products in store          |\n");
+  printf("----------------------------------------------------------------------------\n");
+  printf("|  4: Remove a product from a store  |  5: Find product                    |\n");
+  printf("----------------------------------------------------------------------------\n");
+  printf("|  6: Inventory                      |  7: Done for today                  |\n");
+  printf("----------------------------------------------------------------------------\n");
   printf("What do you want to do?\n\n");
 }
 
 void printItem(product * item){
   if(item != NULL){
-    printf("\nProduct: %s", item->name);
+    printf("Product: %s", item->name);
     printf("\n--Quantity: %.2f", item->quantityValue);
     printf("\n--Quantity Unit: %s", item->quantityUnit);
     printf("\n--Price: %.2f", item->priceValue);
     printf("\n--Price unit: %s\n", item->priceUnit);
-    printf("---------------------------------------");
+    printf("---------------------------------------\n");
   }
 }
 
@@ -187,10 +200,15 @@ float purchase(product ** head, char name[], float quantity){
 // check out price of product p from list 1
 void checkPrice(product *l, char name[]){
   product * node = findItem(l, name);
-  if(node != NULL)
-    printf("\n %s costs %.2f %s.\n", name, node->priceValue, node->priceUnit);
+  if(node != NULL){
+    printf("\n---------------------------------------\n");
+    printf("PRICE CHECK\n");
+    printf("---------------------------------------\n");
+    printf("%s costs %.2f %s.\n", name, node->priceValue, node->priceUnit);
+    printf("---------------------------------------\n\n");
+  }
   else
-    printf("Could not find a price for %s", name);
+    printf("Could not find a price for %s\n\n", name);
 }
 
 void userChoice(int choice, product ** l){
@@ -226,21 +244,38 @@ void userChoice(int choice, product ** l){
       break;
 
     case 4:
-      printf("\nEnter item name: ");
+      printf("---------------------------------------\n");
+      printf("REMOVE ITEM\n");
+      printf("---------------------------------------\n");
+      printf("Enter item name: ");
       scanf("%s", buf);
       strcpy(name, buf);
-      rmItem(&(*l), findItem(*l, name));
+      node = findItem(*l, name);
+      if(node != NULL){
+        printf("Removing item %s . . .\n", name);
+        rmItem(&(*l), node);
+        printf("Item %s removed!\n", name);
+      }
+      else{
+        printf("Can't remove non-exitant item.\n");
+      }
+      printf("---------------------------------------\n");
       break;
 
     case 5:
-      printf("\nEnter item name: ");
+      printf("\n---------------------------------------\n");
+      printf("Enter item name: ");
       scanf("%s", buf);
       strcpy(name, buf);
+      printf("---------------------------------------\n");
+      printf("FIND ITEM\n");
+      printf("---------------------------------------\n");
       printItem(findItem(*l, name));
       break;
 
     case 6:
-      printf("Total sales: %.2f", total);
+      printf("\n---------------------------------------\n");
+      printf("TOTAL SALES: %.2f\n", total);
       showList(*l);
       break;
 
