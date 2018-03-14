@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <math.h>
 
 #define N 20
 
@@ -32,10 +33,10 @@ void rmItem(product ** head, product * node);
 void showList(product * head);
 
 // load data from file if
-int loadData(char inf[], product **l);
+void load(char inf[], product **l);
 
 // save data to file outf
-int saveData(char outf[], product * l);
+void save(char outf[], product * l);
 
 // purchase product
 float purchase(product ** head, char product[], float quantity);

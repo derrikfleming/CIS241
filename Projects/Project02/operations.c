@@ -88,10 +88,10 @@ void showList(product * head){
         break;
       cursor = cursor->next;
     }
-    printf("End of inventory list.\n");
+    printf("\nEnd of inventory list.\n\n");
   }
   else
-    printf("Inventory is empty!\n");
+    printf("Inventory is empty!\n\n");
 }
 
 // find item in list
@@ -125,23 +125,48 @@ void printMenu(){
 void printItem(product * item){
   if(item != NULL){
     printf("\nProduct: %s", item->name);
-    printf("\nQuantity: %f", item->quantityValue);
-    printf("\nQuantity Unit: %s", item->quantityUnit);
-    printf("\nPrice: %f", item->priceValue);
-    printf("\nPrice unit: %s\n", item->priceUnit);
+    printf("\n--Quantity: %.2f", item->quantityValue);
+    printf("\n--Quantity Unit: %s", item->quantityUnit);
+    printf("\n--Price: %.2f", item->priceValue);
+    printf("\n--Price unit: %s\n", item->priceUnit);
+    printf("---------------------------------------");
   }
 }
 
-int save(product * head){
-  int success = 0;
-  if(head != NULL){
-    success = 1;
+void save(char outf[], product * head){
+  FILE * fout = fopen(outf, "w");
+  product * cursor = head;
+
+  while(cursor != NULL){
+    fprintf(fout,"%s,%.2f,%s,%.2f,%s\n",cursor->name,cursor->quantityValue,cursor->quantityUnit,cursor->priceValue,cursor->priceUnit);
+    if(cursor->next != NULL)
+      cursor = cursor->next;
+    else
+      cursor = NULL;
   }
-  return success;
+  fclose(fout);
 }
 
-int loadData(char inf[], product **l){
-  return 0;
+void load(char inf[], product **l){
+  FILE * fp = fopen(inf,"r");
+  product * node;
+  char buf[100];
+
+  if(fp != NULL){
+    while(fscanf(fp, "%s\n", buf) != EOF){
+      node = (product *) malloc(sizeof(product));
+      strcpy(node->name, strtok(buf,","));
+      node->quantityValue = atof(strtok(NULL,","));
+      strcpy(node->quantityUnit,strtok(NULL,","));
+      node->priceValue = atof(strtok(NULL,","));
+      strcpy(node->priceUnit, strtok(NULL,","));
+      insertProduct(&(*l), node);
+    }
+  }
+  else{
+    printf("\nFile could not be found. Proceeding with empty database.\n");
+  }
+  fclose(fp);
 }
 
 float purchase(product ** head, char name[], float quantity){
@@ -160,8 +185,12 @@ float purchase(product ** head, char name[], float quantity){
 }
 
 // check out price of product p from list 1
-void checkPrice(product *l, char product[]){
-
+void checkPrice(product *l, char name[]){
+  product * node = findItem(l, name);
+  if(node != NULL)
+    printf("\n %s costs %.2f %s.\n", name, node->priceValue, node->priceUnit);
+  else
+    printf("Could not find a price for %s", name);
 }
 
 void userChoice(int choice, product ** l){
@@ -189,11 +218,7 @@ void userChoice(int choice, product ** l){
       printf("\nEnter item name: ");
       scanf("%s", buf);
       strcpy(name, buf);
-      node = findItem(*l, name);
-      if(node != NULL)
-        printf("\n %s costs %f %s.\n", name, node->priceValue, node->priceUnit);
-      else
-        printf("Could not find a price for %s", name);
+      checkPrice(*l, name);
       break;
 
     case 3:
@@ -215,11 +240,17 @@ void userChoice(int choice, product ** l){
       break;
 
     case 6:
-      printf("Total sales: %f", total);
+      printf("Total sales: %.2f", total);
       showList(*l);
       break;
 
     case 7:
+      printf("\nYou have chosen to exit. \nPlease enter a filename to save the data to: ");
+      scanf("%s", buf);
+      printf("Please standby while we save the data...\n");
+      save(buf,*l);
+      printf("\nSaving complete! Goodbye!");
+      exit(0);
       break;
 
     default:
@@ -233,6 +264,11 @@ void userChoice(int choice, product ** l){
 // related functions. Ends at saving data to the file data
 int doIt(){
   product * head = NULL;
+  char buf[N] = "";
+
+  printf("Please enter an inventory data file name: ");
+  scanf("%s", buf);
+  load(buf, &head);
 
   while(1){
     printMenu();
