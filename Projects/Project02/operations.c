@@ -132,7 +132,7 @@ void printMenu(){
   printf("----------------------------------------------------------------------------\n");
   printf("|  6: Inventory                      |  7: Done for today                  |\n");
   printf("----------------------------------------------------------------------------\n");
-  printf("What do you want to do?\n\n");
+  printf("Please enter your selection: ");
 }
 
 void printItem(product * item){
@@ -192,7 +192,7 @@ float purchase(product ** head, char name[], float quantity){
       total = quantity * item->priceValue;
     }
     else
-      printf("Quantity '%f' unavailable!", quantity);
+      printf("Quantity '%.2f' unavailable!\n\n", quantity);
   }
   return total;
 }
@@ -214,7 +214,7 @@ void checkPrice(product *l, char name[]){
 void userChoice(int choice, product ** l){
   product * node = NULL;
   char buf[N], name[N];
-  float quantity, price;
+  float quantity;
   static float total = 0.0;
 
   switch(choice){
@@ -300,10 +300,13 @@ void userChoice(int choice, product ** l){
 int doIt(){
   product * head = NULL;
   char buf[N] = "";
-
-  printf("Please enter an inventory data file name: ");
+  printf("Would you like to load a previously saved inventory file? [y/n]\n");
   scanf("%s", buf);
-  load(buf, &head);
+  if(strcmp(buf, "Y") == 0 || strcmp(buf, "y") == 0){
+    printf("Please enter an inventory data file name: ");
+    scanf("%s", buf);
+    load(buf, &head);
+  }
 
   while(1){
     printMenu();
