@@ -8,4 +8,4 @@ operations.o: operations.h operations.c
 	gcc -c operations.c
 
 clean:
-	rm -f p2 *.o data.bak data.out
+	rm -f p2 *.o
