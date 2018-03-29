@@ -1,0 +1,29 @@
+CIS241 Lab 4: Play with Bits
+
+Converting Chars to Numbers
+In C, bitwise operators are very useful in encoding pieces of information into another representation. They
+can also be used to retrieve certain number of bits from one data type to extract expected information. For
+example, the given program (coder.c) can encode two chars into one short integer and save results into a file.
+It can also decode a short integer into two chars and save results in a file.
+Use the command below to download the source code coder.c from the instructor’s web page to your current
+directory.
+
+wget http://cis.gvsu.edu/~wangx/teaching/cis241/coder.c
+wget http://cis.gvsu.edu/~wangx/teaching/cis241/d
+Compile the program and run it as follows:
+gcc coder.c
+./a.out e d c
+./a.out d c dd
+The contents of d and dd should be identical. The contents of c should be all integer numbers.
+Please study the code and understand it.
+Please modify the code so that:
+•
+•
+
+It encodes 4 chars (one byte each) from an input file into one integer (4 bytes each), and saves the
+results into another file.
+It decodes one integer from an input file into 4 chars, and saves the results into another file.
+
+Show your program to your instructor when you have done.
+
+
