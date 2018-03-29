@@ -1,0 +1,5 @@
+#!/bin/bash
+while read x
+do
+  find . -maxdepth 1 -type $1 
+done
